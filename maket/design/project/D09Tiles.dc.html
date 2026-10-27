@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Десктоп, верх 9 — плитки как внизу</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.d{position:relative;width:1440px;height:900px;overflow:hidden;background:#0C0C0C;color:#F4F4F1;font-family:"Manrope",system-ui,sans-serif;font-size:19px;line-height:1.6;-webkit-font-smoothing:antialiased}
+p{margin:0}
+.pic{position:absolute;top:0;right:0;width:760px;height:900px}
+.pic img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 34%}
+.pic .fl{position:absolute;left:0;top:0;right:0;bottom:0;background:linear-gradient(to right,#0C0C0C 0%,rgba(12,12,12,0.8) 12%,rgba(12,12,12,0.2) 30%,rgba(12,12,12,0) 45%)}
+.pic .fb{position:absolute;left:0;right:0;bottom:0;height:34%;background:linear-gradient(to bottom,rgba(12,12,12,0),#0C0C0C)}
+.txt{position:relative;z-index:2;width:800px;height:900px;box-sizing:border-box;padding:0 0 0 96px;display:flex;flex-direction:column;justify-content:center}
+h1{margin:0;max-width:700px;font-size:64px;line-height:1.02;font-weight:800;letter-spacing:-0.045em;color:#FFFFFF}
+.lead{margin-top:26px;max-width:560px;color:#AEB3B8}
+.act{margin-top:40px}
+.lg{position:relative;display:inline-flex;align-items:center;justify-content:center;flex:none;border-radius:50%;overflow:hidden}
+.lg svg{display:block}
+.tgl svg{width:100%;height:100%}
+.mxl{background:linear-gradient(45deg,#3FBAFC 0%,#2A72F8 35%,#4A3EEC 62%,#9038DA 100%)}
+.mxl svg,.wal svg{width:62%;height:62%}
+.wal{background:#25D366}
+.mll{background:#F4F4F1}
+.mll svg{width:70%;height:70%}
+.phl{background:#30D158;color:#FFFFFF}
+.phl svg{width:52%;height:52%}
+.tiles{display:flex;gap:10px;width:max-content}
+.tile{display:flex;flex-direction:column;justify-content:space-between;width:124px;height:110px;box-sizing:border-box;padding:14px 14px 13px;border-radius:20px;background:#141517;box-shadow:inset 0 0 0 1px #232528;color:#F4F4F1;text-decoration:none;transition:transform .15s,background .15s}
+.tile:hover{transform:translateY(-2px);background:#191A1D}
+.tile .lg{width:34px;height:34px}
+.tile .t{display:flex;flex-direction:column;line-height:1.2}
+.tile small{font-size:11px;font-weight:700;color:#8E9399}
+.tile b{font-size:16px;font-weight:800;letter-spacing:-0.01em}
+.tile.call{width:150px;background:#F4F4F1;box-shadow:none;color:#0C0C0C}
+.tile.call:hover{background:#FFFFFF}
+.tile.call small{color:#5E636A}
+.tile.call b{font-size:14px}
+</style>
+</helmet>
+<div class="d">
+
+<div class="pic"><img src="/_blob/2985a1c7c0e333a1ad74d350b32c5412" alt="Геннадий Николаев"><div class="fl" aria-hidden="true"></div><div class="fb" aria-hidden="true"></div></div>
+
+<div class="txt">
+<h1>ИИ для руководителя: без навыков IT, учу на ваших задачах</h1>
+<p class="lead">Принесите одну задачу, которую сейчас делаете руками. Мы сделаем её вместе, а учиться вы будете по ходу дела. В конце система остаётся у вас, и дальше вы меняете её сами, говоря с ИИ обычными словами, как сказали бы программисту.</p>
+<div class="act">
+<div class="tiles">
+<a class="tile" href="https://t.me/nikolaev_gd"><span class="lg tgl"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11.5" fill="#FFFFFF"></circle><path fill="#26A5E4" d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"></path></svg></span><span class="t"><small>Написать в</small><b>Telegram</b></span></a>
+<a class="tile" href="https://max.ru/u/f9LHodD0cOJkASyXXA3Vpr4QfCJV2S_tXXJb1efebr37kKnVIfBLA5ljKOA"><span class="lg mxl"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#FFFFFF" d="M12 3.5c-4.9 0-8.5 3.4-8.5 7.9 0 2 .8 3.8 2.1 5.1L5 20.5l4.3-1.5c.9.3 1.8.4 2.7.4 4.9 0 8.5-3.4 8.5-7.9S16.9 3.5 12 3.5Z"></path></svg></span><span class="t"><small>Написать в</small><b>Max</b></span></a>
+<a class="tile" href="https://wa.me/79955098267"><span class="lg wal"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#FFFFFF" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"></path></svg></span><span class="t"><small>Написать в</small><b>WhatsApp</b></span></a>
+<a class="tile" href="mailto:nikolaev.gd@gmail.com"><span class="lg mll"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#0C0C0C" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"></path></svg></span><span class="t"><small>Написать на</small><b>Почту</b></span></a>
+<a class="tile call" href="tel:+79955098267"><span class="lg phl"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1Z"></path></svg></span><span class="t"><small>Позвонить</small><b>+7 995 509-82-67</b></span></a>
+</div>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

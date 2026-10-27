@@ -2,3 +2,4 @@
 CLAUDE.md
 .claude/
 tmp/
+__pycache__/
