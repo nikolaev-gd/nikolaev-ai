@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Итог А/Б — телефон, низ</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#0C0C0C}
+.m{position:relative;width:100%;background:#0C0C0C;color:#F1F1EF;font-family:"Manrope",system-ui,sans-serif;font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-wrap:break-word}
+p,blockquote{margin:0}
+.m a{color:#F1F1EF}
+.m button{font-family:inherit}
+.lg{position:relative;display:inline-flex;align-items:center;justify-content:center;flex:none;border-radius:50%;overflow:hidden}
+.lg svg{display:block}
+.tgl svg{width:100%;height:100%}
+.mxl{background:linear-gradient(45deg,#3FBAFC 0%,#2A72F8 35%,#4A3EEC 62%,#9038DA 100%)}
+.mxl svg,.wal svg{width:62%;height:62%}
+.wal{background:#25D366}
+.mll{background:#F4F4F1}
+.mll svg{width:72%;height:72%}
+.phl{background:#30D158;color:#FFFFFF}
+.phl svg{width:52%;height:52%}
+.hero{padding-bottom:36px}
+.shot{position:relative;height:clamp(400px,100vw,560px);overflow:hidden}
+.shot img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 66%}
+.shot .fade{position:absolute;left:0;right:0;bottom:-1px;height:58%;background:linear-gradient(to bottom,rgba(12,12,12,0) 0%,rgba(12,12,12,0.7) 55%,#0C0C0C 100%)}
+.in{position:relative;z-index:1;margin-top:-108px;padding:0 20px}
+sc-if{display:contents}
+.in .sub{margin-top:14px;text-wrap:balance;font-size:22px;line-height:1.28;font-weight:700;letter-spacing:-0.02em;color:#E9EAEA}
+.in h1{margin:0;font-size:min(36px,9.4vw);overflow-wrap:normal;word-spacing:0.06em;text-wrap:balance;line-height:1.02;font-weight:800;letter-spacing:-0.045em;color:#FFFFFF}
+.lead{margin-top:24px;color:#AEB3B8}
+.duo{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;margin-top:24px}
+.w{display:flex;align-items:center;justify-content:center;gap:11px;height:64px;padding:0 14px 0 10px;border:0;border-radius:20px;background:#1A1B1E;color:#F4F4F1;text-align:left;cursor:pointer;box-shadow:inset 0 0 0 1px #2C2E32}
+.av{position:relative;flex:none;width:44px;height:44px;border-radius:50%;overflow:hidden;background:#111111;box-shadow:0 0 0 2px #30D158}
+.av img{display:block;width:100%;height:100%;object-fit:cover}
+.tt{display:flex;flex-direction:column;gap:5px}
+.tt b{font-size:17px;line-height:1;font-weight:800;letter-spacing:-0.01em}
+.mini{display:flex;gap:4px}
+.mini .lg{width:20px;height:20px}
+.m a.p{display:flex;align-items:center;gap:8px;height:64px;padding:0 18px 0 15px;border-radius:20px;background:#F4F4F1;color:#0C0C0C;font-size:17px;font-weight:800;letter-spacing:-0.01em;text-decoration:none}
+.p svg{width:19px;height:19px;flex:none}
+.veil{position:absolute;left:0;top:0;width:100%;height:100%;z-index:20;margin:0;padding:0;border:0;background:rgba(0,0,0,0.86);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);cursor:default}
+.scr{position:absolute;left:0;right:0;top:0;height:844px;z-index:30;pointer-events:none}
+@media (max-height:1400px){.scr{height:100svh}}
+.sp{position:absolute;left:8px;right:8px;bottom:8px;margin:0 auto;pointer-events:auto}
+.wrap{padding:0 20px}
+.sec{padding:64px 0}
+.m h2{font-size:min(34px,8.6vw);line-height:1.1;font-weight:800;letter-spacing:-0.04em;margin:0;color:#FFFFFF}
+.intro{color:#A9AEB3;margin-top:18px}
+.intro p+p{margin-top:16px}
+.bento,.grid2,.pairs,.three,.cases{display:flex;flex-direction:column;gap:14px;margin-top:32px}
+.three{margin-top:20px}
+.tile{background:#18191B;border-radius:20px;padding:24px 22px;font-size:20px;line-height:1.36;font-weight:600;letter-spacing:-0.015em}
+.statement{font-size:min(26px,6.7vw);line-height:1.2;font-weight:700;letter-spacing:-0.03em;margin-top:48px}
+.acc{color:#E4570F}
+.kicker{margin-top:18px;font-size:22px;line-height:1.3;font-weight:700;letter-spacing:-0.02em;color:#D7DADD}
+.card{background:#18191B;border-radius:20px;padding:24px 22px;font-size:18px;line-height:1.5;font-weight:500;color:#E9EAEA}
+.inv{background:#151618;color:#E9EAEA;border-top:1px solid #232528;border-bottom:1px solid #232528}
+.pair{border:1px solid #2B2F34;border-radius:20px;padding:24px 22px;display:flex;flex-direction:column;gap:16px}
+.pair.note{background:#1C1D20;border-color:#1C1D20}
+.pair.note .ans{color:#E9EAEA}
+.online .intro{font-size:20px;line-height:1.45;font-weight:600;color:#D7DADD}
+.req{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:18px;line-height:1.5;font-weight:500;color:#E4570F}
+.ans{color:#C9CDD1;font-size:17px}
+.trust{margin-top:40px;font-size:22px;line-height:1.3;font-weight:700;letter-spacing:-0.02em;color:#FFFFFF}
+.opt-title{font-size:24px;line-height:1.2;font-weight:800;letter-spacing:-0.03em;margin-top:40px}
+.after{margin-top:32px}
+.steps{display:flex;flex-direction:column;gap:14px;margin-top:32px}
+.step{background:#18191B;border-radius:20px;padding:24px 22px;font-size:17px;line-height:1.55;color:#C9CDD1}
+.step b{display:block;margin-bottom:10px;font-size:20px;line-height:1.3;font-weight:800;letter-spacing:-0.02em;color:#FFFFFF}
+.after p{color:#A9AEB3}
+.case{background:#18191B;border-radius:20px;padding:26px 22px}
+.stories{display:flex;flex-direction:column;gap:14px;margin-top:32px}
+.work .card,.inv .card{background:transparent;border:1px solid #2B2F34}
+.work .three{margin-top:28px}
+.stories .pair.note .ans{font-size:19px;line-height:1.45;font-weight:600}
+.team .intro .hook{font-size:20px;line-height:1.4;font-weight:700;color:#E9EAEA}
+.about .text2{margin-top:16px;color:#A9AEB3;font-size:17px}
+.final .duo{margin-top:32px}
+.scr.end{top:auto;bottom:0}
+.story{border:1px solid #2B2F34;border-radius:20px;padding:24px 22px}
+.story h3{font-size:21px;line-height:1.28;font-weight:800;letter-spacing:-0.025em;margin:0 0 14px;color:#FFFFFF;text-wrap:balance}
+.story p{color:#C9CDD1;font-size:17px;text-wrap:pretty}
+.case h3{font-size:21px;line-height:1.28;font-weight:800;letter-spacing:-0.025em;margin:0 0 14px}
+.case p{color:#A9AEB3;font-size:17px}
+.apic{position:relative;height:500px;overflow:hidden}
+.apic img{position:absolute;display:block;width:128%;max-width:none;height:auto;left:-14%;top:calc(90px - 59.5vw)}
+.apic .fe{display:none}
+.sec.online{padding-bottom:16px}
+.nw{white-space:nowrap}
+.tight{padding-top:32px}
+.m h2,.big{word-spacing:0.06em}
+.apic .fr{display:none}
+.apic .ft{position:absolute;left:0;right:0;top:-1px;height:26%;background:linear-gradient(to top,rgba(12,12,12,0),#0C0C0C)}
+.apic .fb{position:absolute;left:0;right:0;bottom:-1px;height:58%;background:linear-gradient(to bottom,rgba(12,12,12,0) 0%,rgba(12,12,12,0.7) 55%,#0C0C0C 100%)}
+.about{position:relative;z-index:1;margin-top:-120px;padding-bottom:64px}
+.about .gap{display:none}
+.about .text{font-size:22px;line-height:1.42;font-weight:600;letter-spacing:-0.02em;margin-top:18px}
+.final{padding:40px 0 80px}
+.big{font-size:38px;line-height:1.04;font-weight:800;letter-spacing:-0.045em;color:#FFFFFF}
+.big span{color:#6F757B}
+.tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:36px}
+.m a.ct{display:flex;flex-direction:column;justify-content:space-between;gap:18px;min-height:136px;padding:16px 16px 18px;border-radius:20px;background:#141517;color:#F1F1EF;text-decoration:none;box-sizing:border-box;box-shadow:inset 0 0 0 1px #232528}
+.ct .lg{width:40px;height:40px}
+.ct .t{display:flex;flex-direction:column;gap:2px}
+.ct .sub{font-size:13px;font-weight:700;color:#8E9399}
+.ct .nm{font-size:20px;line-height:1.2;font-weight:800;letter-spacing:-0.02em}
+.ct .t{min-height:70px}
+.m a.ct.wide .t{min-height:0}
+.m a.ct.wide .nm{white-space:nowrap}
+.ct .nm.sm{font-size:min(20px,5vw);line-height:1.2;letter-spacing:-0.02em}
+.m a.ct.wide{grid-column:1 / -1;min-height:0;flex-direction:row;align-items:center;justify-content:flex-start;gap:14px}
+.ch{display:inline-block;margin-top:22px;padding:10px 0;font-size:17px;font-weight:600;text-decoration:underline;text-underline-offset:4px}
+.m h2,.step b,.case h3{text-wrap:balance}
+.big,.statement,.trust,.tile,.card,.ans,.intro p,.case p,.step,.text,.kicker,.lead,.after p{text-wrap:pretty}
+@media (max-width:374px){.w{gap:9px;padding:0 10px 0 9px}.mini{gap:3px}.mini .lg{width:18px;height:18px}.m a.p{padding:0 14px 0 12px;gap:6px}}
+@media (min-width:600px){.in,.wrap{max-width:600px;margin-left:auto;margin-right:auto;box-sizing:border-box}.sp{max-width:560px}.duo{grid-template-columns:minmax(0,1.266fr) minmax(0,1fr)}.w{justify-content:center}.m a.p{justify-content:center}.shot{height:min(75vw,720px)}.shot img{object-position:50% 52%}.big{font-size:36px}.veil{background:rgba(0,0,0,0.92)}.apic{height:600px}.apic img{position:static;width:100%;height:100%;object-fit:cover;object-position:50% 50%}}
+</style>
+</helmet>
+<div class="m" style="margin-top: -7472px">
+
+<header class="hero">
+<div class="shot"><img src="/_blob/2985a1c7c0e333a1ad74d350b32c5412" alt="Геннадий Николаев"><div class="fade" aria-hidden="true"></div></div>
+<div class="in">
+<sc-if value="{{isA}}" hint-placeholder-val="{{ true }}"><h1>Наставник по ИИ для руководителей и команд</h1>
+<p class="sub">Кажется, что вокруг <span class="nw">что-то</span> происходит, а вы это упускаете?</p></sc-if>
+<sc-if value="{{isB}}" hint-placeholder-val="{{ false }}"><h1>Наставник по ИИ для руководителей и команд</h1>
+<p class="sub">Всё, что вы сейчас делаете руками в почте, таблицах и переписке, станет в 10 раз легче.</p></sc-if>
+<div class="duo">
+<button type="button" class="w" onClick="{{openSheet}}" aria-haspopup="dialog" aria-expanded="{{open}}"><span class="av"><img src="/_blob/ccd2a2424da7cd555a2ab35526e17923" alt=""></span><span class="tt"><b>Написать</b><span class="mini" aria-hidden="true"><span class="lg tgl"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11.5" fill="#FFFFFF"></circle><path fill="#26A5E4" d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"></path></svg></span><span class="lg mxl"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#FFFFFF" d="M12 3.5c-4.9 0-8.5 3.4-8.5 7.9 0 2 .8 3.8 2.1 5.1L5 20.5l4.3-1.5c.9.3 1.8.4 2.7.4 4.9 0 8.5-3.4 8.5-7.9S16.9 3.5 12 3.5Z"></path></svg></span><span class="lg wal"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#FFFFFF" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"></path></svg></span><span class="lg mll"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#0C0C0C" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"></path></svg></span></span></span></button>
+<a class="p" href="tel:+79955098267"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"></path></svg>Позвонить</a>
+</div>
+<sc-if value="{{isA}}" hint-placeholder-val="{{ true }}"><p class="lead">За <span class="nw">две-три</span> встречи на ваших рабочих задачах вы увидите, что ничего космического там нет. Если справляетесь с почтой, справитесь и с этим.</p></sc-if>
+<sc-if value="{{isB}}" hint-placeholder-val="{{ false }}"><p class="lead">Садимся вместе, берём ваши задачи и делаем их с ИИ. Через пару встреч вы видите, что сложного там нет.</p></sc-if>
+</div>
+</header>
+
+<section class="sec"><div class="wrap">
+<div class="head">
+<h2>С чем приходят</h2>
+<div class="intro">
+<p>Люди, которые мне пишут, давно в своём деле, и у них всё работало без нейросетей. А теперь появилось ощущение, что вокруг <span class="nw">что-то</span> происходит, а они это упускают.</p>
+<p>При этом с ИИ многие уже знакомы: <span class="nw">что-то</span> спрашивали у ChatGPT, как у поисковика. А что там дальше, непонятно, и кажется, что дальше начинается <span class="nw">что-то</span> для айтишников. Вот как они это пишут.</p>
+</div>
+</div>
+<div class="bento">
+<blockquote class="tile s6">«Я не программист, нужно с самого базового уровня, буквально с объяснения интерфейса, регистрации, тарифов и оплаты».</blockquote>
+<blockquote class="tile s6">«Простым языком расскажите, пожалуйста, где брать и как использовать эти самые нейросети».</blockquote>
+</div>
+<p class="statement">Пишут «научите». А когда начинаешь расспрашивать, человек называет задачу из своей работы. <span class="acc">Ему нужна вещь, которая будет работать в его деле.</span></p>
+</div></section>
+
+<section class="sec now tight"><div class="wrap">
+<h2 class="wide">Что ИИ может делать за руководителя уже сейчас</h2>
+<p class="kicker">Самое ценное то, что происходит само, без вас.</p>
+<div class="grid2 five">
+<p class="card">Утром в Telegram приходит сводка: что пришло на почту за ночь, с черновиками ответов, что у вас на сегодня, что просрочено у команды.</p>
+<p class="card">Надиктовали голосовое по дороге: «напомни Даше про отчёт к пятнице». Утром это задача у Даши в её списке дел.</p>
+<p class="card">Заявки из писем и мессенджеров сами ложатся строками в вашу таблицу. Вы только открываете и смотрите.</p>
+<p class="card">Пришла заявка со списком позиций. ИИ находит их в вашем прайсе и готовит черновик коммерческого предложения. Вам остаётся проверить и отправить.</p>
+<p class="card">Вы пишете в чат обычными словами: найди письмо, где мне присылали счёт за сентябрь. Или: напомни в четверг про договор с поставщиком. Он находит и напоминает.</p>
+</div>
+<p class="trust">По сути это тот же разговор с ИИ обычными словами, только теперь он работает с вашей почтой, таблицами и перепиской. Ничего сверхъестественного. А эксельки будете щёлкать как семечки.</p>
+</div></section>
+
+<section class="sec inv work"><div class="wrap">
+<div class="head">
+<h2>Как идёт работа</h2>
+<div class="intro">
+<p>Если у вас есть конкретная задача, на первой встрече мы сразу начинаем её делать.</p>
+<p>Если задачи пока нет, разбираем, что вы делаете руками каждый день. Выбираем одну простую задачу и подключаем её на этой же встрече: почту, Telegram, таблицу.</p>
+</div>
+</div>
+<p class="trust">На выходе после первой встречи вы намного лучше понимаете, что ИИ может ускорить в вашей работе в 10, а <span class="nw">где-то</span> и в 100 раз, без преувеличения. Понимаете, что реализуемо, а что нет. И уже пробуете на вкус первую автоматизацию.</p>
+<div class="three">
+<p class="card">Дальше идём по вашим задачам, и учитесь вы прямо на них: вы делаете, я рядом и подсказываю.</p>
+<p class="card">Бывает, человек понял принцип и хочет отдать рутину. Тогда инфраструктуру делаю я, а он ей полноценно пользуется, уже понимая, как она устроена.</p>
+<p class="card">В конце система остаётся у вас, и дальше вы меняете её сами, говоря с ИИ обычными словами, как сказали бы программисту.</p>
+</div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+<h2>Что просили и что получилось</h2>
+<div class="cases">
+<article class="case"><h3>Руководитель небольшой команды пришёл научиться делать <span class="nw">телеграм-бота</span> для поручений.</h3><p>До этого он девять месяцев пробовал собрать его сам с ИИ, но дальше прототипа дело не пошло. Через день написал: хотел всё сделать сам, но впереди работа и две командировки, а запустить нужно было вчера. Бота я собрал за полтора дня. Он диктует поручение голосом, ИИ понимает, кому, что и к какому сроку, а утром каждому в команде приходит его список дел. Бот работает на его аккаунтах, и простые вещи он теперь меняет сам.</p></article>
+<article class="case"><h3>Управляющая рестораном попросила объяснить, как правильно применять ИИ в её сфере.</h3><p>Оказалось, что отчёт о доходах и расходах она сводит в Excel руками, а цифры берёт из 1С и iiko. Сейчас мы вместе собираем помощника, который сводит этот отчёт сам, а заодно помогает с юридическими вопросами, сервисом и маркетингом. Она учится по ходу и потом будет дорабатывать помощника сама.</p></article>
+<article class="case"><h3>Руководитель клиентского сервиса в сети из 80 станций замены масла попросил настроить ИИ так, «чтобы всё было быстро».</h3><p>Оказалось, что он уже месяц сам собирает с ИИ в обычном чате систему для всей сети: график механиков по станциям и <span class="nw">чек-листы</span> для проверки станций. Программировать он не умеет, поэтому каждая правка шла по кругу: скриншот, новый файл, снова скриншот, и таких кругов было больше пятнадцати. Теперь работаем вместе: он говорит словами, что поменять, и ИИ сам переделывает программу.</p></article>
+<article class="case"><h3>В торговой компании на 1С попросили помочь с тем, что съедает больше всего времени: сбор данных за прошлые периоды, уходимость товаров, переоценка и заказ.</h3><p>Всё это делали руками каждый день. Теперь каждую ночь программа сама забирает свежие данные из 1С, а утром приходит сводка: выручка, прибыль, что заканчивается и сколько заказать. По любому товару можно спросить словами. Сам заказ и переоценку в 1С <span class="nw">по-прежнему</span> делает человек, ИИ только подсказывает.</p></article>
+<article class="case full"><h3>Руководитель логистической компании пришёл научиться использовать ChatGPT для управленческих задач: переписка, ответы сотрудникам, эксель, документы.</h3><p>За восемь занятий на его же переписке и документах мы собрали ему помощников: один отвечает сотрудникам в почте, другой разбирает договоры, третий собирает отчёт. Новых помощников он теперь делает сам.</p></article>
+</div>
+</div></section>
+
+<section class="sec inv"><div class="wrap">
+<div class="head">
+<h2>К чему это может прийти</h2>
+<div class="intro">
+<p>Начинаем всегда с простого. А дальше вы сами увидите, как из простых вещей быстро вырастает то, что я называю вторым мозгом руководителя.</p>
+<p>День руководителя состоит из людей и договорённостей. Второй мозг собирает всё, что вы говорили и писали: созвоны, переписку в Telegram и Максе, почту, заметки, голосовые. И возвращает это в тот момент, когда нужно.</p>
+</div>
+</div>
+<div class="pairs five">
+<div class="pair"><p class="req">«Сегодня встреча с Петровым».</p><p class="ans">Утром приходит сводка: о чём договаривались в прошлый раз, что обещали вы, что обещал он, какие вопросы висят.</p></div>
+<div class="pair"><p class="req">«Что я обещал на этой неделе и кому».</p><p class="ans">Список из созвонов, переписки и голосовых, с датами.</p></div>
+<div class="pair"><p class="req">В дороге надиктовали: «подумать, не поднять ли цену для Петрова».</p><p class="ans">Через неделю, когда открываете переписку с Петровым, он напоминает: вы про это думали.</p></div>
+<div class="pair"><p class="req">Созвон закончился.</p><p class="ans">Обещания разложены по людям, а за день до срока приходит напоминание.</p></div>
+<div class="pair"><p class="req">«Кто у меня знает <span class="nw">кого-нибудь</span> в <span class="nw">такой-то</span> сфере, у кого какая экспертиза».</p><p class="ans">Он показывает людей и цепочку, через кого дойти.</p></div>
+</div>
+<div class="stories">
+<article class="story full"><h3>Такую систему мы собрали для семейного офиса.</h3><p>Через главу офиса проходят все дела владельца: поездки, бронирования, переписка, чеки, счета. Всё стекается в одну базу, и любой вопрос по ней решается одной фразой в чат.</p></article>
+<div class="pair note"><p class="ans">А сейчас собираем для предпринимателя, у которого 18 компаний, около шести тысяч созвонов и больше десяти тысяч контактов.</p></div>
+</div>
+<p class="trust">Всё это под вашим контролем. Данные лежат на ваших аккаунтах. Видите их только вы и ваша модель. Ни я, ни <span class="nw">кто-то</span> ещё в них не влезет.</p>
+</div></section>
+
+<section class="sec team"><div class="wrap">
+<div class="head">
+<h2>Для команды</h2>
+<div class="intro">
+<p class="hook">Бывает, руководитель сам уже с ИИ на ты, а команда тормозит, и её надо подтянуть.</p>
+<p>Когда учить нужно отдел или компанию, лекции работают слабо. Человек кивает, а потом не знает, что делать со своей таблицей. Поэтому каждое занятие устроено как работа: я ставлю задачу, все делают её на своих файлах, потом разбираем, что получилось.</p>
+<p>После каждого занятия у каждого полчаса один на один: переносим то, что делали, на его работу. В конце каждый защищает свой проект, то, что он теперь делает с ИИ, а раньше делал руками.</p>
+</div>
+</div>
+<div class="grid2">
+<article class="story"><h3>Так сейчас учатся 25 сотрудников компании, которая торгует трубопроводной арматурой:</h3><p>инженеры, продажи, закупки, склад, сборка, бухгалтерия.</p></article>
+<article class="story"><h3>Компания, которая производит, монтирует и обслуживает лифты.</h3><p>Там есть продажи, запчасти, производственный цех, сервис, руководители, бухгалтерия. Мы подключили ИИ к почте, мессенджерам и базе документов, собрали инфраструктуру для каждого и для команды и обучили сотрудников.</p></article>
+</div>
+<p class="trust">У компании остаётся работающая система. У каждого сотрудника настроенная модель, свои помощники под его задачи и проект, которым он пользуется каждый день. И каждый умеет сам поменять своего помощника.</p>
+</div></section>
+
+<section class="sec online"><div class="wrap">
+<div class="head">
+<h2>Про онлайн</h2>
+<div class="intro"><p>Всё проходит онлайн. Вы показываете свой экран, и я вижу то же, что и вы. Непривычно обычно только первые полчаса.</p></div>
+</div>
+</div></section>
+
+<section class="about-sec">
+<div class="apic"><img src="/_blob/75d0ee8eee8cb8e337d9ccea4b06a69f" alt="Геннадий Николаев"><div class="fr" aria-hidden="true"></div><div class="fe" aria-hidden="true"></div><div class="ft" aria-hidden="true"></div><div class="fb" aria-hidden="true"></div></div>
+<div class="wrap about">
+<div class="gap" aria-hidden="true"></div>
+<div>
+<h2>Обо мне</h2>
+<p class="text">Меня зовут Геннадий Николаев. С ИИ я работаю три года, каждый день, так что варюсь в этом постоянно. До этого и параллельно десять лет занимаюсь обучением и наставничеством взрослых: руководителей, команд, специалистов.</p>
+<p class="text2">Последние полгода ко мне идёт большой шквал людей из самых разных направлений обучаться ИИ: бухгалтеры, менеджеры, управленцы, владельцы бизнеса. Уровень подготовки, входа и инициативы у всех очень разный, и я умею аккуратно через это проводить. Объясняю простыми словами и на задачах человека, без теории ради теории.</p>
+</div>
+</div>
+</section>
+
+<section class="final"><div class="wrap">
+<p class="big">Напишите, чем вы занимаетесь и что сейчас делаете руками. <span>Подскажу, с чего можно начать.</span></p>
+<div class="duo"><button type="button" class="w" onClick="{{openSheet2}}" aria-haspopup="dialog" aria-expanded="{{open}}"><span class="av"><img src="/_blob/ccd2a2424da7cd555a2ab35526e17923" alt=""></span><span class="tt"><b>Написать</b><span class="mini" aria-hidden="true"><span class="lg tgl"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11.5" fill="#FFFFFF"></circle><path fill="#26A5E4" d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"></path></svg></span><span class="lg mxl"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#FFFFFF" d="M12 3.5c-4.9 0-8.5 3.4-8.5 7.9 0 2 .8 3.8 2.1 5.1L5 20.5l4.3-1.5c.9.3 1.8.4 2.7.4 4.9 0 8.5-3.4 8.5-7.9S16.9 3.5 12 3.5Z"></path></svg></span><span class="lg wal"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#FFFFFF" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"></path></svg></span><span class="lg mll"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#0C0C0C" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"></path></svg></span></span></span></button><a class="p" href="tel:+79955098267"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"></path></svg>Позвонить</a></div>
+<a class="ch" href="#"><span class="nw">Telegram-канал</span>, где я выкладываю вкусняшки из работы</a>
+</div></section>
+
+
+<sc-if value="{{open}}" hint-placeholder-val="{{ false }}">
+<button type="button" class="veil" aria-label="Закрыть" onClick="{{close}}"></button>
+</sc-if>
+<sc-if value="{{openTop}}" hint-placeholder-val="{{ false }}">
+<div class="scr"><div class="sp"><dc-import name="Sheet2" on-close="{{close}}" tg="{{ true }}" hint-size="374px,342px"></dc-import></div></div>
+</sc-if>
+<sc-if value="{{openEnd}}" hint-placeholder-val="{{ false }}">
+<div class="scr end"><div class="sp"><dc-import name="Sheet2" on-close="{{close}}" tg="{{ true }}" hint-size="374px,342px"></dc-import></div></div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"hero":{"editor":"enum","options":["А","Б"],"default":"А","section":"Шапка"},"$preview":{"width":390,"height":5821}}'>
+class Component extends DCLogic {
+renderVals() {
+const s = this.state || {};
+const b = (this.props.hero ?? 'А') === 'Б';
+return {
+isA: !b,
+isB: b,
+open: s.open === true,
+openTop: s.open === true && s.at !== 'end',
+openEnd: s.open === true && s.at === 'end',
+openSheet: () => this.setState({ open: true, at: 'top' }),
+openSheet2: () => this.setState({ open: true, at: 'end' }),
+close: () => this.setState({ open: false })
+};
+}
+}
+</script>
+</body>
+</html>
