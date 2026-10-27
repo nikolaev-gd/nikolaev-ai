@@ -145,9 +145,19 @@ SPLIT = '''<!DOCTYPE html>
 <html lang="ru"><head>
 <meta charset="UTF-8">
 {ROBOTS}<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ИИ для руководителей и команд — Геннадий Николаев</title>
+<title>Наставник по ИИ для руководителей и команд — Геннадий Николаев</title>
+<link rel="canonical" href="{BASE}">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-{ICONS_EXTRA}<style>html,body{margin:0;background:#0C0C0C;color:#F1F1EF;font-family:system-ui,sans-serif}</style>
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+{ICONS_EXTRA}<!-- Превью ссылки в мессенджерах: их роботы не выполняют скрипт и видят только эту страницу -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="{BASE}">
+<meta property="og:title" content="Наставник по ИИ для руководителей и команд">
+<meta property="og:image" content="{SITE}portrait-1.jpeg">
+<meta property="og:locale" content="ru_RU">
+<meta name="theme-color" content="#0C0C0C">
+<style>html,body{margin:0;background:#0C0C0C;color:#F1F1EF;font-family:system-ui,sans-serif}</style>
 <script>
 (function(){
   var v;
@@ -166,7 +176,8 @@ def build(target):
     OUT.mkdir(parents=True, exist_ok=True)
     for h in ('А', 'Б'):
         page(h)
-    (OUT / 'index.html').write_text(SPLIT.replace('{ROBOTS}', ROBOTS).replace('{PREFIX}', PREFIX).replace('{ICONS_EXTRA}', ICONS_EXTRA))
+    (OUT / 'index.html').write_text(SPLIT.replace('{ROBOTS}', ROBOTS).replace('{PREFIX}', PREFIX).replace('{ICONS_EXTRA}', ICONS_EXTRA)
+                                     .replace('{BASE}', BASE).replace('{SITE}', SITE))
     shutil.copy(HERE / 'photos/tg-avatar.jpg', OUT / 'tg-avatar.jpg')
     if OUT != SHARED / 'ai':
         for f in SHARED_FILES:
