@@ -1,7 +1,8 @@
 """Значки сайта nikolaev-ai.ru — та же аватарка, что в кнопке «Написать»: фото в зелёном кольце, круг на весь значок.
 
 Исходник — photos/favicon-master.png: снимок этой аватарки со страницы (элемент .av, увеличен в 10 раз,
-кольцо 2 px вокруг 48 px — как на сайте), углы за кругом прозрачные. Поменялась аватарка — переснять.
+кольцо 2 px вокруг 48 px — как на сайте), углы за кругом прозрачные, край круга взят на 3 px внутрь,
+чтобы не попала тёмная кайма от фона снимка. Поменялась аватарка — переснять.
 
 python3 favicon.py <папка> — пишет туда favicon.ico, favicon-16x16.png, favicon-32x32.png,
 favicon-192.png, favicon-512.png, apple-touch-icon.png и site.webmanifest.
@@ -11,7 +12,6 @@ from PIL import Image
 
 HERE = pathlib.Path(__file__).resolve().parent
 SRC = HERE / 'photos/favicon-master.png'
-BG = (0x0C, 0x0C, 0x0C)  # фон страницы — под значок для iPhone, он не бывает прозрачным
 
 
 def icon(size):
@@ -24,9 +24,8 @@ def make(out):
                        (192, 'favicon-192.png'), (512, 'favicon-512.png')):
         icon(size).save(out / name)
     icon(256).save(out / 'favicon.ico', sizes=[(16, 16), (32, 32), (48, 48)])
-    apple = Image.new('RGB', (180, 180), BG)
-    apple.paste(icon(180), (0, 0), icon(180))
-    apple.save(out / 'apple-touch-icon.png')
+    # Прозрачные углы и тут: этот значок берут карточки ссылок в мессенджерах, тёмный квадрат там виден рамкой
+    icon(180).save(out / 'apple-touch-icon.png')
     (out / 'site.webmanifest').write_text(json.dumps({
         'name': 'Геннадий Николаев — наставник по ИИ',
         'short_name': 'Николаев ИИ',
