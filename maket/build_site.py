@@ -28,7 +28,8 @@ def parts(dc, hero):
     body = re.sub(r'<helmet>.*?</helmet>', '', body, flags=re.S)
     other = 'isB' if hero == 'А' else 'isA'
     body = re.sub(r'<sc-if value="\{\{' + other + r'\}\}".*?</sc-if>', '', body, flags=re.S)
-    body = re.sub(r'<sc-if value="\{\{open\}\}"[^>]*>(.*?)</sc-if>', r'<div data-open hidden>\1</div>', body, flags=re.S)
+    for k, v in (('open', 'any'), ('openTop', 'top'), ('openEnd', 'end')):
+        body = re.sub(r'<sc-if value="\{\{' + k + r'\}\}"[^>]*>(.*?)</sc-if>', r'<div data-open="' + v + r'" hidden>\1</div>', body, flags=re.S)
     sheet = (HERE / 'design/project/Sheet2.dc.html').read_text().split('<x-dc>')[1].split('</x-dc>')[0]
     sheet = re.sub(r'<helmet>.*?</helmet>', '', sheet, flags=re.S)
     sheet = re.sub(r'<sc-if value="\{\{studio\}\}".*?</sc-if>', '', sheet, flags=re.S)
@@ -36,7 +37,7 @@ def parts(dc, hero):
     sheet = re.sub(r'<a [^>]*href="#"[^>]*>.*?</a>', '', sheet, flags=re.S)
     body = re.sub(r'<dc-import name="Sheet2"[^>]*></dc-import>', lambda m: sheet, body)
     body = re.sub(r'<sc-if[^>]*>|</sc-if>', '', body)
-    body = body.replace('onClick="{{openSheet}}"', 'data-openbtn').replace('aria-expanded="{{open}}"', 'aria-expanded="false"')
+    body = body.replace('onClick="{{openSheet}}"', 'data-openbtn="top"').replace('onClick="{{openSheet2}}"', 'data-openbtn="end"').replace('aria-expanded="{{open}}"', 'aria-expanded="false"')
     body = body.replace('onClick="{{close}}"', 'data-close')
     # Адреса Telegram-канала пока нет — ссылку-заглушку на живой странице не показываем
     body = re.sub(r'<a class="ch" href="#">.*?</a>', '', body, flags=re.S)
@@ -59,19 +60,20 @@ def page(hero):
 var V='{lat.upper()}';
 function ym_(){{try{{ym({METRIKA},'reachGoal',arguments[0],{{ai_variant:V}})}}catch(e){{}}}}
 try{{ym({METRIKA},'params',{{ai_variant:V}})}}catch(e){{}}
-function set(open,root){{
-  document.querySelectorAll('[data-open]').forEach(function(x){{if(!open||root.contains(x))x.hidden=!open}});
-  document.querySelectorAll('[data-openbtn]').forEach(function(b){{b.setAttribute('aria-expanded',open&&root.contains(b)?'true':'false')}});
+function set(btn){{
+  var root=btn&&btn.closest('.pg,.m'),at=btn&&btn.getAttribute('data-openbtn');
+  document.querySelectorAll('[data-open]').forEach(function(x){{var k=x.getAttribute('data-open');x.hidden=!(btn&&root.contains(x)&&(k==='any'||k===at))}});
+  document.querySelectorAll('[data-openbtn]').forEach(function(b){{b.setAttribute('aria-expanded',b===btn?'true':'false')}});
 }}
 document.addEventListener('click',function(e){{
   var b=e.target.closest('[data-openbtn]');
-  if(b){{set(true,b.closest('.pg,.m'));ym_('ai_open');return}}
-  if(e.target.closest('[data-close]')){{set(false);return}}
+  if(b){{set(b);ym_('ai_open');return}}
+  if(e.target.closest('[data-close]')){{set(null);return}}
   var a=e.target.closest('a[href]');
   if(a){{var h=a.getAttribute('href');
     ym_(h.indexOf('tel:')==0?'ai_call':h.indexOf('mailto:')==0?'ai_mail':h.indexOf('t.me')>-1?'ai_tg':h.indexOf('wa.me')>-1?'ai_wa':h.indexOf('max.ru')>-1?'ai_max':'ai_link')}}
 }});
-document.addEventListener('keydown',function(e){{if(e.key==='Escape')set(false)}});
+document.addEventListener('keydown',function(e){{if(e.key==='Escape')set(null)}});
 }})();'''
     html = f'''<!DOCTYPE html>
 <html lang="ru"><head>

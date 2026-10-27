@@ -16,7 +16,7 @@ def paras(hero, body):
             if t.startswith('Шапка'): continue
             if t != 'Последний экран': out.append(t)
             for p in ps:
-                if p.startswith('Кнопка:'): continue
+                if p.startswith(('Кнопка:', 'Кнопки:')): continue
                 out.append(p.split(': ', 1)[1] if p.startswith('Ещё:') else p)
     return out
 class T(html.parser.HTMLParser):

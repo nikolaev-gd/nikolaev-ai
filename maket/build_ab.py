@@ -27,6 +27,9 @@ WRITE_BTN = (f'<button type="button" class="w" onClick="{{{{openSheet}}}}" aria-
              f'<span class="av"><img src="{AV}" alt=""></span><span class="tt"><b>Написать</b>'
              f'<span class="mini" aria-hidden="true">{MINI}</span></span></button>')
 CALL_BTN = f'<a class="p" href="tel:+79955098267">{PH_LINE}Позвонить</a>'
+WRITE_BTN2 = WRITE_BTN.replace('{{openSheet}}', '{{openSheet2}}')
+OPEN = lambda k: f'<sc-if value="{{{{{k}}}}}" hint-placeholder-val="{{{{ false }}}}">'
+# Низ страницы: те же две кнопки, что в шапке («Написать» с мессенджерами и «Позвонить»)
 
 def tiles(wide_call):
     call_cls = 'ct wide' if wide_call else 'ct'
@@ -61,27 +64,27 @@ def T(t):
     t = re.sub(r'\s(бы|б|ли|ль|же|ж)(?![\w-])', ' \\1', t)
     if len(t) > 60 and ' ' in t:
         a, _, b = t.rpartition(' ')
-        if len(b) <= 16: t = a + ' ' + b
+        if len(b) <= 16 and ' ' not in b: t = a + ' ' + b
     return _NW.sub(r'<span class="nw">\1</span>', e(t))
 
 def middle_html():
     q = SECS['С чем приходят']
-    st_a, _, st_b = q[5].rpartition('. ')
+    st_a, _, st_b = q[4].rpartition('. ')
     now = SECS['Что ИИ может делать за руководителя уже сейчас']
-    br = SECS['К чему это может прийти']
     hw = SECS['Как идёт работа']
-    def step(t):
-        a, b = first(t)
-        return f'<p class="step"><b>{T(a)}</b> {T(b)}</p>'
     cs = SECS['Что просили и что получилось']
+    br = SECS['К чему это может прийти']
     tm = SECS['Для команды']
     on = SECS['Про онлайн']
     ab = SECS['Обо мне']
+    assert (len(q), len(now), len(hw), len(cs), len(br), len(tm), len(ab)) == (5, 7, 6, 5, 10, 6, 2), \
+        (len(q), len(now), len(hw), len(cs), len(br), len(tm), len(ab))
     def pair(t):
         a, b = first(t)
         return f'<div class="pair"><p class="req">{T(a)}</p><p class="ans">{T(b)}</p></div>'
-    def story(t, full=False):
-        a, b = first(t)
+    def story(t, full=False, sep='. '):
+        a, _, b = t.partition(sep)
+        a += sep.strip()
         return f'<article class="story{" full" if full else ""}"><h3>{T(a)}</h3><p>{T(b)}</p></article>'
     def case(t, full=False):
         a, b = first(t)
@@ -89,10 +92,13 @@ def middle_html():
     out = f"""<section class="sec"><div class="wrap">
 <div class="head">
 <h2>{T('С чем приходят')}</h2>
-<div class="intro"><p>{T(q[0])}</p></div>
+<div class="intro">
+<p>{T(q[0])}</p>
+<p>{T(q[1])}</p>
+</div>
 </div>
 <div class="bento">
-{chr(10).join(f'<blockquote class="tile s6">{T(x)}</blockquote>' for x in q[1:5])}
+{chr(10).join(f'<blockquote class="tile s6">{T(x)}</blockquote>' for x in q[2:4])}
 </div>
 <p class="statement">{T(st_a)}. <span class="acc">{T(st_b)}</span></p>
 </div></section>
@@ -103,21 +109,10 @@ def middle_html():
 <div class="grid2 five">
 {chr(10).join(f'<p class="card">{T(t)}</p>' for t in now[1:6])}
 </div>
+<p class="trust">{T(now[6])}</p>
 </div></section>
 
-<section class="sec inv"><div class="wrap">
-<div class="head">
-<h2>{T('К чему это может прийти')}</h2>
-<div class="intro"><p>{T(br[0])}</p></div>
-</div>
-<div class="stories">
-{story(br[1], True)}
-{story(br[2], True)}
-</div>
-<p class="trust">{T(br[3])}</p>
-</div></section>
-
-<section class="sec"><div class="wrap">
+<section class="sec inv work"><div class="wrap">
 <div class="head">
 <h2>{T('Как идёт работа')}</h2>
 <div class="intro">
@@ -125,31 +120,51 @@ def middle_html():
 <p>{T(hw[1])}</p>
 </div>
 </div>
-<div class="steps">
-{chr(10).join(step(t) for t in hw[2:5])}
+<p class="trust">{T(hw[2])}</p>
+<div class="three">
+{chr(10).join(f'<p class="card">{T(t)}</p>' for t in hw[3:6])}
 </div>
 </div></section>
 
-<section class="sec tight"><div class="wrap">
+<section class="sec"><div class="wrap">
 <h2>{T('Что просили и что получилось')}</h2>
 <div class="cases">
 {chr(10).join(case(t, i == len(cs) - 1) for i, t in enumerate(cs))}
 </div>
 </div></section>
 
-<section class="sec inv team"><div class="wrap">
+<section class="sec inv"><div class="wrap">
+<div class="head">
+<h2>{T('К чему это может прийти')}</h2>
+<div class="intro">
+<p>{T(br[0])}</p>
+<p>{T(br[1])}</p>
+</div>
+</div>
+<div class="pairs five">
+{chr(10).join(pair(t) for t in br[2:7])}
+</div>
+<div class="stories">
+{story(br[7], True)}
+<div class="pair note"><p class="ans">{T(br[8])}</p></div>
+</div>
+<p class="trust">{T(br[9])}</p>
+</div></section>
+
+<section class="sec team"><div class="wrap">
 <div class="head">
 <h2>{T('Для команды')}</h2>
 <div class="intro">
-<p>{T(tm[0])}</p>
+<p class="hook">{T(tm[0])}</p>
 <p>{T(tm[1])}</p>
+<p>{T(tm[2])}</p>
 </div>
 </div>
 <div class="grid2">
-{story(tm[2])}
-{story(tm[3])}
+{story(tm[3], sep=': ')}
+{story(tm[4])}
 </div>
-<p class="trust">{T(tm[4])}</p>
+<p class="trust">{T(tm[5])}</p>
 </div></section>
 
 <section class="sec online"><div class="wrap">
@@ -166,12 +181,11 @@ def middle_html():
 <div>
 <h2>{T('Обо мне')}</h2>
 <p class="text">{T(ab[0])}</p>
+<p class="text2">{T(ab[1])}</p>
 </div>
 </div>
 </section>"""
-    assert len(hw) == 5 and len(cs) == 5 and len(br) == 4 and len(now) == 6 and len(tm) == 5 and len(q) == 6, (len(hw), len(cs), len(br))
     return out
-
 
 def hero(v):
     h = SECS['Шапка ' + v]
@@ -250,7 +264,10 @@ return {{
 isA: !b,
 isB: b,
 open: s.open === true,
-openSheet: () => this.setState({{ open: true }}),
+openTop: s.open === true && s.at !== 'end',
+openEnd: s.open === true && s.at === 'end',
+openSheet: () => this.setState({{ open: true, at: 'top' }}),
+openSheet2: () => this.setState({{ open: true, at: 'end' }}),
 close: () => this.setState({{ open: false }})
 }};
 }}
@@ -380,8 +397,21 @@ sc-if{display:contents}
 .story.full h3{margin:0}
 .story.full p{max-width:680px}
 .team .trust{margin-top:56px}
+.now .trust{margin-top:56px}
+.work .trust{margin-top:56px;max-width:1040px}
+.work .three{margin-top:40px}
+.work .card,.inv .card{background:transparent;border:1px solid #2B2F34;font-size:20px;line-height:1.5}
+.pairs.five{grid-template-columns:repeat(6,minmax(0,1fr))}
+.pairs.five .pair{grid-column:span 2}
+.pairs.five .pair:nth-child(n+4){grid-column:span 3}
+.stories .pair.note{padding:32px 34px}
+.stories .pair.note .ans{font-size:22px;line-height:1.45;font-weight:600;max-width:900px}
+.team .intro .hook{font-size:24px;line-height:1.4;font-weight:700;color:#E9EAEA}
+.about .text2{margin-top:20px;max-width:640px;color:#A9AEB3;font-size:19px}
+.final .act{margin-top:48px}
 @media (min-width:1441px){.pic .fr,.apic .fe{display:block}}
 @media (max-width:1279px){.steps{grid-template-columns:1fr;gap:16px}.step{display:grid;grid-template-columns:5fr 7fr;gap:12px 48px;align-items:start}.step b{margin:0}.sec.online{padding-bottom:40px}}
+@media (max-width:1279px){.pairs.five{grid-template-columns:repeat(2,minmax(0,1fr))}.pairs.five .pair,.pairs.five .pair:nth-child(n+4){grid-column:auto}.pairs.five .pair:last-child{grid-column:1 / -1}.work .three{grid-template-columns:1fr}}
 @media (max-width:1279px){.grid2.five{grid-template-columns:repeat(2,minmax(0,1fr))}.grid2.five .card,.grid2.five .card:nth-child(n+4){grid-column:auto}.grid2.five .card:last-child{grid-column:1 / -1}}
 @media (max-width:1279px){.tiles{grid-template-columns:repeat(6,minmax(0,1fr))}.pg a.ct{grid-column:span 2}.pg a.ct:nth-child(n+4){grid-column:span 3}}'''
 
@@ -401,13 +431,13 @@ def desk(h, v='А', full=True, offset=0):
 {WRITE_BTN}
 {CALL_BTN}
 </div>
-<sc-if value="{{{{open}}}}" hint-placeholder-val="{{{{ false }}}}">
+{OPEN('openTop')}
 <div class="pop">{SHEET}</div>
 </sc-if>
 </div>
 </div>
 </header>
-{(chr(10) + middle_html() + chr(10) + chr(10) + '<section class="final">' + chr(10) + '<div class="wrap">' + chr(10) + BIG + chr(10) + tiles(False) + chr(10) + CH + chr(10) + '</div>' + chr(10) + '</section>' + chr(10)) if full else ''}
+{(chr(10) + middle_html() + chr(10) + chr(10) + '<section class="final">' + chr(10) + '<div class="wrap">' + chr(10) + BIG + chr(10) + '<div class="act"><div class="duo">' + WRITE_BTN2 + CALL_BTN + '</div>' + OPEN('openEnd') + '<div class="pop">' + SHEET + '</div></sc-if></div>' + chr(10) + CH + chr(10) + '</div>' + chr(10) + '</section>' + chr(10)) if full else ''}
 
 <sc-if value="{{{{open}}}}" hint-placeholder-val="{{{{ false }}}}">
 {VEIL}
@@ -476,6 +506,13 @@ sc-if{display:contents}
 .after p{color:#A9AEB3}
 .case{background:#18191B;border-radius:20px;padding:26px 22px}
 .stories{display:flex;flex-direction:column;gap:14px;margin-top:32px}
+.work .card,.inv .card{background:transparent;border:1px solid #2B2F34}
+.work .three{margin-top:28px}
+.stories .pair.note .ans{font-size:19px;line-height:1.45;font-weight:600}
+.team .intro .hook{font-size:20px;line-height:1.4;font-weight:700;color:#E9EAEA}
+.about .text2{margin-top:16px;color:#A9AEB3;font-size:17px}
+.final .duo{margin-top:32px}
+.scr.end{top:auto;bottom:0}
 .story{border:1px solid #2B2F34;border-radius:20px;padding:24px 22px}
 .story h3{font-size:21px;line-height:1.28;font-weight:800;letter-spacing:-0.025em;margin:0 0 14px;color:#FFFFFF;text-wrap:balance}
 .story p{color:#C9CDD1;font-size:17px;text-wrap:pretty}
@@ -530,11 +567,16 @@ def phone(h, v='А', full=True, offset=0):
 {phone_lead(v, switch)}
 </div>
 </header>
-{(chr(10) + middle_html() + chr(10) + chr(10) + '<section class="final"><div class="wrap">' + chr(10) + BIG + chr(10) + tiles(True) + chr(10) + CH + chr(10) + '</div></section>' + chr(10)) if full else ''}
+{(chr(10) + middle_html() + chr(10) + chr(10) + '<section class="final"><div class="wrap">' + chr(10) + BIG + chr(10) + '<div class="duo">' + WRITE_BTN2 + CALL_BTN + '</div>' + chr(10) + CH + chr(10) + '</div></section>' + chr(10)) if full else ''}
 
 <sc-if value="{{{{open}}}}" hint-placeholder-val="{{{{ false }}}}">
 {VEIL}
+</sc-if>
+{OPEN('openTop')}
 <div class="scr"><div class="sp">{SHEET}</div></div>
+</sc-if>
+{OPEN('openEnd')}
+<div class="scr end"><div class="sp">{SHEET}</div></div>
 </sc-if>
 
 </div>
