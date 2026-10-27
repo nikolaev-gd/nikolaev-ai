@@ -13,23 +13,27 @@ import re, sys, shutil, pathlib, subprocess
 HERE = pathlib.Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 import build_ab as B
+import favicon
 
 # Куда собирать: папка, адрес, путь на сайте, закрыт ли от поиска
 TARGETS = [
     (HERE.parent, 'https://nikolaev-ai.ru/', '/', False),
     (pathlib.Path('/Users/kenneth/Dev/consulting/teen-mentor/ai'), 'https://nikolaev-mentor.ru/ai/', '/ai/', True),
 ]
-# Картинки и значки, которых на nikolaev-ai.ru нет своих, — копируются из сайта ментора
+# Портреты, которых на nikolaev-ai.ru нет своих, — копируются из сайта ментора.
+# Значки у nikolaev-ai.ru свои — из аватарки кнопки «Написать» (favicon.py)
 SHARED = pathlib.Path('/Users/kenneth/Dev/consulting/teen-mentor')
-SHARED_FILES = ['portrait-1.webp', 'portrait-2.webp', 'portrait-1.jpeg',
-                'favicon-16x16.png', 'favicon-32x32.png', 'apple-touch-icon.png']
+SHARED_FILES = ['portrait-1.webp', 'portrait-2.webp', 'portrait-1.jpeg']
 NOINDEX = '<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">\n'
 
 def use(target):
-    global OUT, BASE, PREFIX, ROBOTS, IMG, SITE
+    global OUT, BASE, PREFIX, ROBOTS, IMG, SITE, ICONS_EXTRA
     OUT, BASE, PREFIX, closed = target
     SITE = BASE[:BASE.index('/', 8) + 1]
     ROBOTS = NOINDEX if closed else ''
+    # Свои значки только у nikolaev-ai.ru (favicon.py); на сайте ментора остаются его значки
+    ICONS_EXTRA = '' if closed else ('<link rel="icon" href="/favicon.ico" sizes="any">\n'
+                                     '<link rel="manifest" href="/site.webmanifest">\n')
     IMG = {
         B.AV: PREFIX + 'tg-avatar.jpg',
         B.P1: '/portrait-1.webp',
@@ -101,7 +105,7 @@ document.addEventListener('keydown',function(e){{if(e.key==='Escape')set(null)}}
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<meta property="og:type" content="website">
+{ICONS_EXTRA}<meta property="og:type" content="website">
 <meta property="og:url" content="{BASE}{lat}/">
 <meta property="og:title" content="{h1}">
 <meta property="og:description" content="{sub}">
@@ -142,7 +146,8 @@ SPLIT = '''<!DOCTYPE html>
 <meta charset="UTF-8">
 {ROBOTS}<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ИИ для руководителей и команд — Геннадий Николаев</title>
-<style>html,body{margin:0;background:#0C0C0C;color:#F1F1EF;font-family:system-ui,sans-serif}</style>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+{ICONS_EXTRA}<style>html,body{margin:0;background:#0C0C0C;color:#F1F1EF;font-family:system-ui,sans-serif}</style>
 <script>
 (function(){
   var v;
@@ -161,11 +166,12 @@ def build(target):
     OUT.mkdir(parents=True, exist_ok=True)
     for h in ('А', 'Б'):
         page(h)
-    (OUT / 'index.html').write_text(SPLIT.replace('{ROBOTS}', ROBOTS).replace('{PREFIX}', PREFIX))
+    (OUT / 'index.html').write_text(SPLIT.replace('{ROBOTS}', ROBOTS).replace('{PREFIX}', PREFIX).replace('{ICONS_EXTRA}', ICONS_EXTRA))
     shutil.copy(HERE / 'photos/tg-avatar.jpg', OUT / 'tg-avatar.jpg')
     if OUT != SHARED / 'ai':
         for f in SHARED_FILES:
             shutil.copy(SHARED / f, OUT / f)
+        favicon.make(OUT)
     r = subprocess.run([sys.executable, str(HERE / 'checktext_ab.py'), f'{OUT}/a/index.html:А:full', f'{OUT}/b/index.html:Б:full'],
                        capture_output=True, text=True)
     print(r.stdout)
