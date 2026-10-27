@@ -1,6 +1,8 @@
-"""Живые страницы А/Б на nikolaev-mentor.ru/ai/ из того же макета, что на холсте дизайна.
+"""Живые страницы А/Б из того же макета, что на холсте дизайна, — на два адреса сразу:
+nikolaev-ai.ru (корень репозитория ~/Dev/nikolaev-ai/, без noindex) и nikolaev-mentor.ru/ai/
+(~/Dev/consulting/teen-mentor/ai/, с noindex, как весь тот сайт).
 
-python3 build_site.py — пишет в ~/Dev/consulting/teen-mentor/ai/:
+python3 build_site.py — пишет в каждое место:
   a/index.html  — шапка А,  b/index.html — шапка Б,
   index.html    — общий адрес: делит посетителей поровну и запоминает выбор,
   tg-avatar.jpg — аватарка для кнопки «Написать».
@@ -12,13 +14,27 @@ HERE = pathlib.Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 import build_ab as B
 
-OUT = pathlib.Path('/Users/kenneth/Dev/consulting/teen-mentor/ai')
-BASE = 'https://nikolaev-mentor.ru/ai/'
-IMG = {
-    B.AV: '/ai/tg-avatar.jpg',
-    B.P1: '/portrait-1.webp',
-    '/_blob/75d0ee8eee8cb8e337d9ccea4b06a69f': '/portrait-2.webp',
-}
+# Куда собирать: папка, адрес, путь на сайте, закрыт ли от поиска
+TARGETS = [
+    (HERE.parent, 'https://nikolaev-ai.ru/', '/', False),
+    (pathlib.Path('/Users/kenneth/Dev/consulting/teen-mentor/ai'), 'https://nikolaev-mentor.ru/ai/', '/ai/', True),
+]
+# Картинки и значки, которых на nikolaev-ai.ru нет своих, — копируются из сайта ментора
+SHARED = pathlib.Path('/Users/kenneth/Dev/consulting/teen-mentor')
+SHARED_FILES = ['portrait-1.webp', 'portrait-2.webp', 'portrait-1.jpeg',
+                'favicon-16x16.png', 'favicon-32x32.png', 'apple-touch-icon.png']
+NOINDEX = '<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">\n'
+
+def use(target):
+    global OUT, BASE, PREFIX, ROBOTS, IMG, SITE
+    OUT, BASE, PREFIX, closed = target
+    SITE = BASE[:BASE.index('/', 8) + 1]
+    ROBOTS = NOINDEX if closed else ''
+    IMG = {
+        B.AV: PREFIX + 'tg-avatar.jpg',
+        B.P1: '/portrait-1.webp',
+        '/_blob/75d0ee8eee8cb8e337d9ccea4b06a69f': '/portrait-2.webp',
+    }
 METRIKA = 106335095
 
 def parts(dc, hero):
@@ -78,8 +94,7 @@ document.addEventListener('keydown',function(e){{if(e.key==='Escape')set(null)}}
     html = f'''<!DOCTYPE html>
 <html lang="ru"><head>
 <meta charset="UTF-8">
-<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{ROBOTS}<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{h1} — Геннадий Николаев</title>
 <meta name="description" content="{sub}">
 <link rel="canonical" href="{BASE}{lat}/">
@@ -90,7 +105,7 @@ document.addEventListener('keydown',function(e){{if(e.key==='Escape')set(null)}}
 <meta property="og:url" content="{BASE}{lat}/">
 <meta property="og:title" content="{h1}">
 <meta property="og:description" content="{sub}">
-<meta property="og:image" content="https://nikolaev-mentor.ru/portrait-1.jpeg">
+<meta property="og:image" content="{SITE}portrait-1.jpeg">
 <meta property="og:locale" content="ru_RU">
 <meta name="theme-color" content="#0C0C0C">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -125,8 +140,7 @@ ym({METRIKA},'init',{{ssr:true,webvisor:true,clickmap:true,referrer:document.ref
 SPLIT = '''<!DOCTYPE html>
 <html lang="ru"><head>
 <meta charset="UTF-8">
-<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{ROBOTS}<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ИИ для руководителей и команд — Геннадий Николаев</title>
 <style>html,body{margin:0;background:#0C0C0C;color:#F1F1EF;font-family:system-ui,sans-serif}</style>
 <script>
@@ -134,20 +148,24 @@ SPLIT = '''<!DOCTYPE html>
   var v;
   try{v=localStorage.getItem('ai_ab')}catch(e){}
   if(v!=='a'&&v!=='b'){v=Math.random()<0.5?'a':'b';try{localStorage.setItem('ai_ab',v)}catch(e){}}
-  location.replace('/ai/'+v+'/'+location.search+location.hash);
+  location.replace('{PREFIX}'+v+'/'+location.search+location.hash);
 })();
 </script>
 </head>
-<body><noscript><p style="padding:24px"><a href="/ai/a/" style="color:#F1F1EF">ИИ для руководителей и команд</a></p></noscript></body>
+<body><noscript><p style="padding:24px"><a href="{PREFIX}a/" style="color:#F1F1EF">ИИ для руководителей и команд</a></p></noscript></body>
 </html>
 '''
 
-if __name__ == '__main__':
+def build(target):
+    use(target)
     OUT.mkdir(parents=True, exist_ok=True)
     for h in ('А', 'Б'):
         page(h)
-    (OUT / 'index.html').write_text(SPLIT)
+    (OUT / 'index.html').write_text(SPLIT.replace('{ROBOTS}', ROBOTS).replace('{PREFIX}', PREFIX))
     shutil.copy(HERE / 'photos/tg-avatar.jpg', OUT / 'tg-avatar.jpg')
+    if OUT != SHARED / 'ai':
+        for f in SHARED_FILES:
+            shutil.copy(SHARED / f, OUT / f)
     r = subprocess.run([sys.executable, str(HERE / 'checktext_ab.py'), f'{OUT}/a/index.html:А:full', f'{OUT}/b/index.html:Б:full'],
                        capture_output=True, text=True)
     print(r.stdout)
@@ -156,3 +174,7 @@ if __name__ == '__main__':
     if not miss_ok:
         sys.exit('ТЕКСТ НЕ СОВПАДАЕТ с landing-text-ab.md')
     print('ok:', OUT)
+
+if __name__ == '__main__':
+    for t in TARGETS:
+        build(t)

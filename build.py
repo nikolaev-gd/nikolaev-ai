@@ -23,7 +23,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 SRC = ROOT / "landing-text.md"
-OUT = ROOT / "index.html"
+OUT = ROOT / "tmp" / "old-index.html"  # старый одностраничник; корень сайта теперь собирает maket/build_site.py
 
 TELEGRAM_URL = "https://t.me/nikolaev_gd"
 CHANNEL_URL = "#"  # ЗАГЛУШКА: адрес Telegram-канала Геннадий назовёт позже
